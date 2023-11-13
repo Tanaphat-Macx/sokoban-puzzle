@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://g05llhp33ha4"]
+
+[ext_resource type="Script" path="res://Scene/UI/level_menu.gd" id="1_hfnee"]
+[ext_resource type="Texture2D" uid="uid://c2nsjsbgd2b4i" path="res://UI/icon/White/2x/home.png" id="1_o84io"]
+[ext_resource type="FontFile" uid="uid://b48stmdu42pvt" path="res://Font/Kenney Thick.ttf" id="2_hjfqd"]
+[ext_resource type="PackedScene" uid="uid://kcgcjn1rch4" path="res://Scene/UI/level_grid.tscn" id="3_cjgxu"]
+[ext_resource type="Texture2D" uid="uid://c0nqw4gn85vb7" path="res://UI/icon/White/2x/arrowLeft.png" id="4_38fbl"]
+[ext_resource type="Texture2D" uid="uid://bfhmgkyq5xlpm" path="res://UI/icon/White/2x/arrowRight.png" id="6_17h3p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rq8re"]
+font = ExtResource("2_hjfqd")
+font_size = 35
+
+[node name="LevelMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_hfnee")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="HomeButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+icon = ExtResource("1_o84io")
+flat = true
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Level Select"
+label_settings = SubResource("LabelSettings_rq8re")
+vertical_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="BackButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_38fbl")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="ClipControl" type="Control" parent="VBoxContainer/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(550, 330)
+layout_mode = 2
+
+[node name="GridBox" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ClipControl"]
+layout_mode = 1
+offset_right = 1084.0
+offset_bottom = 277.0
+theme_override_constants/separation = 11
+
+[node name="LevelGrid" parent="VBoxContainer/HBoxContainer/ClipControl/GridBox" instance=ExtResource("3_cjgxu")]
+layout_mode = 2
+
+[node name="LevelGrid2" parent="VBoxContainer/HBoxContainer/ClipControl/GridBox" instance=ExtResource("3_cjgxu")]
+layout_mode = 2
+
+[node name="LevelGrid3" parent="VBoxContainer/HBoxContainer/ClipControl/GridBox" instance=ExtResource("3_cjgxu")]
+layout_mode = 2
+
+[node name="NextButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("6_17h3p")
+ignore_texture_size = true
+stretch_mode = 3
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/NextButton" to="." method="_on_next_button_pressed"]

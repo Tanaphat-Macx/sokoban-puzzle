@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://hluqrb746o08"]
+
+[ext_resource type="Script" path="res://Scene/Object/crate_wood_character2D.gd" id="1_hoklr"]
+[ext_resource type="Texture2D" uid="uid://bmr1ue4lnvyho" path="res://Sokoban Pack/PNG/Default size/Crates/crate_02.png" id="2_obpsw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig6kw"]
+size = Vector2(64, 64)
+
+[node name="Crate_Wood_character2D" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_hoklr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_obpsw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ig6kw")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]

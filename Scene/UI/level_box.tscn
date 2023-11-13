@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://dig1qo8lmhhfk"]
+
+[ext_resource type="Script" path="res://Scripts/UI/LevelBox.gd" id="1_6tmvo"]
+[ext_resource type="FontFile" uid="uid://b48stmdu42pvt" path="res://Font/Kenney Thick.ttf" id="2_p8fs6"]
+[ext_resource type="Texture2D" uid="uid://btww06jxvqrpm" path="res://UI/icon/White/2x/locked.png" id="3_kxu32"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lqgvm"]
+line_spacing = 2.08165e-12
+font = ExtResource("2_p8fs6")
+font_size = 50
+shadow_size = 0
+
+[node name="LevelBox" type="PanelContainer"]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 100.0
+offset_bottom = 100.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_6tmvo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.247059, 0.262745, 0.160784, 1)
+
+[node name="Level_number_lebel" type="Label" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "1"
+label_settings = SubResource("LabelSettings_lqgvm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="Lock_icon" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_kxu32")
+expand_mode = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
