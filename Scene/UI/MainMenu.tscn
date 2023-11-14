@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://m438cuxpt3hm"]
+[gd_scene load_steps=8 format=3 uid="uid://m438cuxpt3hm"]
 
 [ext_resource type="FontFile" uid="uid://b48stmdu42pvt" path="res://Font/Kenney Thick.ttf" id="1_4s5bk"]
 [ext_resource type="Theme" uid="uid://bm1kohq7funge" path="res://Font/button.tres" id="2_kt2xx"]
@@ -8,7 +8,68 @@
 font = ExtResource("1_4s5bk")
 font_size = 80
 
-[node name="Control" type="Control"]
+[sub_resource type="Animation" id="Animation_jg15a"]
+resource_name = "Reveal"
+length = 1.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-400, 579), Vector2(182, 579)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cover:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mqofp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(182, 579)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cover:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0vwvb"]
+_data = {
+"RESET": SubResource("Animation_mqofp"),
+"Reveal": SubResource("Animation_jg15a")
+}
+
+[node name="Title_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,14 +87,11 @@ grow_vertical = 2
 color = Color(0.85098, 0.462745, 0.411765, 1)
 
 [node name="Label" type="Label" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -280.0
+layout_mode = 2
+offset_left = 80.0
 offset_top = 300.0
-offset_right = 280.0
-offset_bottom = 450.0
+offset_right = 640.0
+offset_bottom = 393.0
 grow_horizontal = 2
 text = "Sokoban"
 label_settings = SubResource("LabelSettings_ygw8i")
@@ -47,9 +105,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -170.0
+offset_left = -178.0
 offset_top = -61.0
-offset_right = -54.0
+offset_right = -45.9998
 offset_bottom = 61.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -72,3 +130,18 @@ text = "PUZZLES"
 visibility_layer = 2
 position = Vector2(370, 538)
 texture = ExtResource("3_h1ks1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Reveal"
+libraries = {
+"": SubResource("AnimationLibrary_0vwvb")
+}
+
+[node name="Cover" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00392157, 0, 0, 1)

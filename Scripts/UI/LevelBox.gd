@@ -5,7 +5,7 @@ signal level_selected
 
 @export var locked  = true:
 	set = set_locked
-@export var level_num : int = 1:
+@export var level_num = 1:
 	set = set_level
 	
 @onready var level_number_lebel = $Level_number_lebel
@@ -33,4 +33,4 @@ func _on_gui_input(event):
 		return
 	if event is InputEventMouseButton and event.pressed:
 		level_selected.emit(level_num)
-		print("Click level", level_num)
+		print("Click level ", level_num)
