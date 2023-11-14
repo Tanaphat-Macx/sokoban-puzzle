@@ -2,9 +2,10 @@ extends MarginContainer
 
 var num_grids = 1 
 var current_grid = 1 
-var grid_width = 550
+var grid_width = 425
 
-@onready var grid_box = $VBoxContainer/HBoxContainer/ClipControl/HBoxContainer
+
+@onready var grid_box = $VBoxContainer/HBoxContainer/ClipControl/GridBox
 
 
 func _ready():
@@ -14,11 +15,9 @@ func _ready():
 	num_grids = grid_box.get_child_count()
 	for grid in grid_box.get_children():
 		for box in grid.get_children():
-			var num = box.get_index() + 1 + 15 * grid.get_index()
+			var num = box.get_index() + 1 + 12 * grid.get_index()
 			box.level_num = num
 			box.locked = false
-
-
 
 
 func _on_back_button_pressed():
@@ -35,3 +34,5 @@ func _on_next_button_pressed():
 		var tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 		tween.tween_property(grid_box, "position:x", grid_box.position.x - grid_width, 0.5)
 #		grid_box.rect_position.x -= grid_width
+
+

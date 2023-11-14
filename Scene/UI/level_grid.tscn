@@ -3,14 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://dig1qo8lmhhfk" path="res://Scene/UI/level_box.tscn" id="1_q38ox"]
 
 [node name="LevelGrid" type="GridContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
-columns = 5
+offset_right = 430.0
+offset_bottom = 320.0
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 4
 
 [node name="LevelBox" parent="." instance=ExtResource("1_q38ox")]
 layout_mode = 2
@@ -55,13 +52,4 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="LevelBox12" parent="." instance=ExtResource("1_q38ox")]
-layout_mode = 2
-
-[node name="LevelBox13" parent="." instance=ExtResource("1_q38ox")]
-layout_mode = 2
-
-[node name="LevelBox14" parent="." instance=ExtResource("1_q38ox")]
-layout_mode = 2
-
-[node name="LevelBox15" parent="." instance=ExtResource("1_q38ox")]
 layout_mode = 2
