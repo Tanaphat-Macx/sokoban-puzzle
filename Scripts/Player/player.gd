@@ -1,71 +1,59 @@
-extends CharacterBody2D
+extends Area2D
 
-@export var direction : Vector2 = Vector2.ZERO	
-@export var speed : float = 150
+var animation_speed = 3
+var tile_size = 64
+var moving = false
+@onready var ray = $RayCast2D
 
 
-func _process(delta):
-	#	update_animation()
-	direction = Vector2.ZERO
+var inputs = {
+	"right" : Vector2.RIGHT,
+	"left" : Vector2.LEFT,
+	"up" : Vector2.UP,
+	"down" : Vector2.DOWN
+}
+
+
+func _ready():
+	position = position.snapped(Vector2.ONE * tile_size)
+	position += Vector2.ONE * tile_size / 2
+
+func _unhandled_input(event):
+	if moving:
+		return
+	for dir in inputs.keys():
+		if event.is_action_pressed(dir):
+			move(dir)
+			update_animation(dir)
+	
+func move(dir):
+	ray.target_position = inputs[dir] * tile_size
+	ray.force_raycast_update()
+	if !ray.is_colliding():
+		#position += inputs[dir] * tile_size
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "position", position + inputs[dir] * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
+		moving = true
+		$AnimationPlayer.play(dir)
+		await tween.finished
+		moving = false
+	else:
+		var collider = ray.get_collider()
+		if collider.is_in_group("box"):
+			if collider.move(dir):
+				position += inputs[dir] * tile_size
+				
+	
+func update_animation(dir):
 	if Input.is_action_pressed("left"):
-		direction = Vector2.LEFT
 		$AnimationPlayer.play("walk_left")
-	elif Input.is_action_just_released("left"):
-		$AnimationPlayer.play("idel_left")
-		
-	if Input.is_action_pressed("right"):
-		direction = Vector2.RIGHT
+	elif Input.is_action_pressed("right"):
 		$AnimationPlayer.play("walk_right")
-	elif Input.is_action_just_released("right"):
-		$AnimationPlayer.play("idel_right")	
-		
-	if Input.is_action_pressed("up"):
-		direction = Vector2.UP
+	elif Input.is_action_pressed("up"):
 		$AnimationPlayer.play("walk_up")
-	elif Input.is_action_just_released("up"):
-		$AnimationPlayer.play("idel_up")
-		
-	if Input.is_action_pressed("down"):
-		direction = Vector2.DOWN
+	elif Input.is_action_pressed("down"):
 		$AnimationPlayer.play("walk_down")
-	elif Input.is_action_just_released("down"):
-		$AnimationPlayer.play("idel_down")
-
-		
-	var collision = move_and_collide(direction * speed * delta)
-	if collision:
-		var node = collision.get_collider()
-		if node is CharacterBody2D:
-			node.push(direction)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
 
 
 

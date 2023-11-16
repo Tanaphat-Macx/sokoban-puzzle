@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://sni54a2cnqxs"]
+[gd_scene load_steps=8 format=3 uid="uid://sni54a2cnqxs"]
 
 [ext_resource type="Texture2D" uid="uid://ut4m6s75772c" path="res://Sokoban Pack/Tilesheet/sokoban_tilesheet.png" id="1_p81lm"]
 [ext_resource type="PackedScene" uid="uid://0ulrvchr7wyv" path="res://Scene/player.tscn" id="2_y35at"]
 [ext_resource type="Texture2D" uid="uid://q2u1oac1j8hu" path="res://Sokoban Pack/PNG/Default size/Crates/crate_27.png" id="3_dbxyr"]
-[ext_resource type="PackedScene" uid="uid://tkd43jea07u" path="res://Scene/Object/crate_wood.tscn" id="3_kkiim"]
 [ext_resource type="PackedScene" uid="uid://hluqrb746o08" path="res://Scene/Object/crate_wood_character2D.tscn" id="4_kn3bl"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_2svdr"]
@@ -315,7 +314,7 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_f77xl"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 5
+physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_md3qj")
 pattern_0 = SubResource("TileMapPattern_2svdr")
 
@@ -344,6 +343,3 @@ position = Vector2(192, 128)
 
 [node name="Crate_Wood_character2D" parent="." instance=ExtResource("4_kn3bl")]
 position = Vector2(384, 192)
-
-[node name="Crate_Wood" parent="." instance=ExtResource("3_kkiim")]
-position = Vector2(384, 384)
