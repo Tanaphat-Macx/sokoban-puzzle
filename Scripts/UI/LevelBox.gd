@@ -25,9 +25,6 @@ func set_level(value):
 		await  ready
 	level_number_lebel.text = str(level_num)
 	
-	
-	
-	
 func _on_gui_input(event):
 	if locked:
 		return

@@ -13,6 +13,10 @@ var inputs = {
 	"down" : Vector2.DOWN
 }
 
+#func _ready():
+#	position = position.snapped(Vector2.ONE * tile_size)
+#	position += Vector2.ONE * tile_size/2
+
 func move(dir):
 	ray.target_position = inputs[dir] * tile_size
 	ray.force_raycast_update()
