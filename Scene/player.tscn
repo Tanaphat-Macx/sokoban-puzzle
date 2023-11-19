@@ -266,8 +266,8 @@ parameters/idle/blend_position = Vector2(-0.00284094, 1.08683)
 parameters/walk/blend_position = Vector2(0, 0)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(2.08165e-12, 2.08165e-12)
+target_position = Vector2(2.08165e-12, 30)
 collision_mask = 5
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
+zoom = Vector2(2, 2)
