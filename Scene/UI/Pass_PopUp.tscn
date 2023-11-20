@@ -1,0 +1,144 @@
+[gd_scene load_steps=10 format=3 uid="uid://5xnc2pyhw04c"]
+
+[ext_resource type="FontFile" uid="uid://b48stmdu42pvt" path="res://Font/Kenney Thick.ttf" id="1_c72bh"]
+[ext_resource type="Theme" uid="uid://dy5vqx4u15cxg" path="res://UI/themes/button_theme.tres" id="2_2wq7t"]
+[ext_resource type="Texture2D" uid="uid://dkvs8oi2hh6y2" path="res://UI/icon/White/2x/barsHorizontal.png" id="2_831r5"]
+[ext_resource type="Texture2D" uid="uid://nptvp0dr3b0y" path="res://UI/icon/White/2x/return.png" id="3_v5mhk"]
+[ext_resource type="Texture2D" uid="uid://c6y4h7hxno18e" path="res://UI/icon/White/2x/fastForward.png" id="4_gyeaw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwl1k"]
+bg_color = Color(1, 0.886275, 0.772549, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_4fv8o"]
+font = ExtResource("1_c72bh")
+font_size = 30
+font_color = Color(0.564706, 0.52549, 0.533333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2lkb"]
+bg_color = Color(0.839216, 0.839216, 0.839216, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_1dkf2"]
+font = ExtResource("1_c72bh")
+font_size = 19
+font_color = Color(0.564706, 0.52549, 0.533333, 1)
+
+[node name="Pass_PopUp" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.85098, 0.462745, 0.411765, 1)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -150.0
+offset_right = 225.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lwl1k")
+
+[node name="Cleared_text" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.0
+offset_top = 25.0
+offset_right = 105.0
+offset_bottom = 62.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "Cleared"
+label_settings = SubResource("LabelSettings_4fv8o")
+
+[node name="Sub-Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -80.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q2lkb")
+
+[node name="win_text" type="Label" parent="Panel/Sub-Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.5
+offset_top = -13.0
+offset_right = 85.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You solved the puzzle"
+label_settings = SubResource("LabelSettings_1dkf2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -166.0
+offset_top = -135.0
+offset_right = 166.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+
+[node name="Puzzle_Button" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_2wq7t")
+icon = ExtResource("2_831r5")
+icon_alignment = 1
+
+[node name="Restart_Button" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_2wq7t")
+icon = ExtResource("3_v5mhk")
+
+[node name="Next_Button" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_2wq7t")
+icon = ExtResource("4_gyeaw")

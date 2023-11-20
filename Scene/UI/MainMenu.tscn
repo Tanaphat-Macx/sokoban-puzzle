@@ -233,7 +233,6 @@ position = Vector2(370, 538)
 texture = ExtResource("3_h1ks1")
 
 [node name="Cover" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -248,8 +247,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 700.0
-offset_right = 2140.0
-offset_bottom = 2560.0
+offset_right = 3580.0
+offset_bottom = 5120.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 20
