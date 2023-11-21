@@ -1,4 +1,38 @@
-[gd_scene format=3 uid="uid://cvak7e1skaot1"]
+[gd_scene load_steps=10 format=3 uid="uid://cvak7e1skaot1"]
+
+[ext_resource type="FontFile" uid="uid://b48stmdu42pvt" path="res://Font/Kenney Thick.ttf" id="1_ha8tx"]
+[ext_resource type="Theme" uid="uid://dy5vqx4u15cxg" path="res://UI/themes/button_theme.tres" id="2_gis2l"]
+[ext_resource type="Texture2D" uid="uid://dkvs8oi2hh6y2" path="res://UI/icon/White/2x/barsHorizontal.png" id="3_hhyvi"]
+[ext_resource type="Texture2D" uid="uid://c706c7se2bjhf" path="res://UI/icon/White/2x/audioOn.png" id="4_kq0to"]
+[ext_resource type="Texture2D" uid="uid://c4fj3w22ow8ry" path="res://UI/icon/White/2x/right.png" id="5_wn1my"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mncbd"]
+bg_color = Color(1, 0.886275, 0.772549, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_b30lb"]
+font = ExtResource("1_ha8tx")
+font_size = 30
+font_color = Color(0.564706, 0.52549, 0.533333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uo8n3"]
+bg_color = Color(0.839216, 0.839216, 0.839216, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_tdlhi"]
+font = ExtResource("1_ha8tx")
+font_size = 19
+font_color = Color(0.564706, 0.52549, 0.533333, 1)
 
 [node name="Pause_menu" type="Control"]
 layout_mode = 3
@@ -7,3 +41,105 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.85098, 0.462745, 0.411765, 1)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -150.0
+offset_right = 225.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mncbd")
+
+[node name="Paused_Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = 25.0
+offset_right = 75.0
+offset_bottom = 62.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "Pause"
+label_settings = SubResource("LabelSettings_b30lb")
+vertical_alignment = 1
+
+[node name="Sub-Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -80.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uo8n3")
+
+[node name="message_text" type="Label" parent="Panel/Sub-Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.5
+offset_top = -13.0
+offset_right = 85.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "i will wait for you"
+label_settings = SubResource("LabelSettings_tdlhi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -166.0
+offset_top = -135.0
+offset_right = 166.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+
+[node name="Puzzle_Button" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_gis2l")
+icon = ExtResource("3_hhyvi")
+icon_alignment = 1
+
+[node name="Audio_Button" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_gis2l")
+icon = ExtResource("4_kq0to")
+
+[node name="Resume_Button" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_gis2l")
+icon = ExtResource("5_wn1my")
