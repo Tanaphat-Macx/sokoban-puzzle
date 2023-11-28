@@ -36,3 +36,5 @@ func _on_next_button_pressed():
 #		grid_box.rect_position.x -= grid_width
 
 
+func _on_home_button_pressed():
+	get_tree().change_scene_to_file("res://Scene/UI/MainMenu.tscn")

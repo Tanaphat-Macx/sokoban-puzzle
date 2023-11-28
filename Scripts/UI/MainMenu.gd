@@ -4,6 +4,9 @@ extends Control
 @onready var level_menu = $LevelMenu
 @onready var player_face = $PlayerFace
 @onready var v_box_container = $VBoxContainer
+		
+func _on_start_pressed():
+	get_tree().change_scene_to_file("res://Scene/UI/hud.tscn")
 
 func _on_puzzles_pressed():
 	$Anim.play("on_puzzles_pressed")
@@ -14,6 +17,3 @@ func _on_home_button_pressed():
 func _on_anim_animation_finished(anim_name):
 	if anim_name == "Reveal":
 		$Cover.visible = false
-		
-
-

@@ -1,16 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://g05llhp33ha4"]
+[gd_scene load_steps=9 format=3 uid="uid://g05llhp33ha4"]
 
+[ext_resource type="Script" path="res://Scripts/UI/level_menu.gd" id="1_bip1t"]
 [ext_resource type="Texture2D" uid="uid://c2nsjsbgd2b4i" path="res://UI/icon/White/2x/home.png" id="1_o84io"]
 [ext_resource type="FontFile" uid="uid://b48stmdu42pvt" path="res://Font/Kenney Thick.ttf" id="2_hjfqd"]
 [ext_resource type="Texture2D" uid="uid://c0nqw4gn85vb7" path="res://UI/icon/White/2x/arrowLeft.png" id="4_38fbl"]
 [ext_resource type="PackedScene" uid="uid://kcgcjn1rch4" path="res://Scene/UI/level_grid.tscn" id="5_lu8ag"]
 [ext_resource type="Texture2D" uid="uid://bfhmgkyq5xlpm" path="res://UI/icon/White/2x/arrowRight.png" id="6_17h3p"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_rq8re"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_csp3m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_crvao"]
 font = ExtResource("2_hjfqd")
-font_size = 35
+font_size = 50
 
 [node name="LevelMenu" type="MarginContainer"]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,6 +24,11 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
+script = ExtResource("1_bip1t")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.85098, 0.462745, 0.411765, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -28,6 +37,7 @@ theme_override_constants/separation = 150
 [node name="HomeButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_csp3m")
 icon = ExtResource("1_o84io")
 flat = true
 
@@ -35,41 +45,33 @@ flat = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Level Select"
-label_settings = SubResource("LabelSettings_rq8re")
-vertical_alignment = 2
+label_settings = SubResource("LabelSettings_crvao")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 5
 
 [node name="BackButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
-size_flags_horizontal = 3
 texture_normal = ExtResource("4_38fbl")
-ignore_texture_size = true
 stretch_mode = 3
 
 [node name="ClipControl" type="Control" parent="VBoxContainer/HBoxContainer"]
 clip_contents = true
-custom_minimum_size = Vector2(550, 322)
+custom_minimum_size = Vector2(425, 320)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ClipControl"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="GridBox" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ClipControl"]
+layout_mode = 2
+offset_right = 845.0
+offset_bottom = 320.0
 theme_override_constants/separation = 15
 
-[node name="LevelGrid" parent="VBoxContainer/HBoxContainer/ClipControl/HBoxContainer" instance=ExtResource("5_lu8ag")]
+[node name="LevelGrid" parent="VBoxContainer/HBoxContainer/ClipControl/GridBox" instance=ExtResource("5_lu8ag")]
 layout_mode = 2
 
-[node name="LevelGrid2" parent="VBoxContainer/HBoxContainer/ClipControl/HBoxContainer" instance=ExtResource("5_lu8ag")]
-layout_mode = 2
-
-[node name="LevelGrid3" parent="VBoxContainer/HBoxContainer/ClipControl/HBoxContainer" instance=ExtResource("5_lu8ag")]
+[node name="LevelGrid2" parent="VBoxContainer/HBoxContainer/ClipControl/GridBox" instance=ExtResource("5_lu8ag")]
 layout_mode = 2
 
 [node name="NextButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
@@ -77,9 +79,6 @@ clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("6_17h3p")
-ignore_texture_size = true
 stretch_mode = 3
 
 [connection signal="pressed" from="VBoxContainer/HomeButton" to="." method="_on_home_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/NextButton" to="." method="_on_next_button_pressed"]

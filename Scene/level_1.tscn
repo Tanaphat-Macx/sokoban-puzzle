@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr0431sa1eqwu"]
+
+[ext_resource type="Script" path="res://Scripts/UI/level_1.gd" id="1_boutd"]
+[ext_resource type="Script" path="res://Scripts/Test/TileMap.gd" id="2_oysd8"]
+
+[node name="level_1" type="Node2D"]
+script = ExtResource("1_boutd")
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+script = ExtResource("2_oysd8")

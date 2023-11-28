@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvak7e1skaot1"]
+[gd_scene load_steps=11 format=3 uid="uid://cvak7e1skaot1"]
 
+[ext_resource type="Script" path="res://Scripts/UI/Pause_menu.gd" id="1_dfyse"]
 [ext_resource type="FontFile" uid="uid://b48stmdu42pvt" path="res://Font/Kenney Thick.ttf" id="1_ha8tx"]
 [ext_resource type="Theme" uid="uid://dy5vqx4u15cxg" path="res://UI/themes/button_theme.tres" id="2_gis2l"]
 [ext_resource type="Texture2D" uid="uid://dkvs8oi2hh6y2" path="res://UI/icon/White/2x/barsHorizontal.png" id="3_hhyvi"]
@@ -41,6 +42,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_dfyse")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -143,3 +145,7 @@ icon = ExtResource("4_kq0to")
 layout_mode = 2
 theme = ExtResource("2_gis2l")
 icon = ExtResource("5_wn1my")
+
+[connection signal="pressed" from="Panel/HBoxContainer/Puzzle_Button" to="." method="_on_puzzle_button_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Audio_Button" to="." method="_on_audio_button_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Resume_Button" to="." method="_on_resume_button_pressed"]
