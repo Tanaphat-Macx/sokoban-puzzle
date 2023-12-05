@@ -1,11 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr0431sa1eqwu"]
+[gd_scene load_steps=7 format=3 uid="uid://c0ucekplry06s"]
 
-[ext_resource type="Script" path="res://Scripts/UI/level_1.gd" id="1_boutd"]
+[ext_resource type="Texture2D" uid="uid://ut4m6s75772c" path="res://Sokoban Pack/Tilesheet/sokoban_tilesheet.png" id="1_ufnmu"]
 [ext_resource type="Script" path="res://Scripts/Test/TileMap.gd" id="2_oysd8"]
+[ext_resource type="Texture2D" uid="uid://5o3rxisaxdvt" path="res://Sokoban Pack/Tilesheet/sokoban_tilesheet@2.png" id="2_vfqbj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m6u28"]
+texture = ExtResource("1_ufnmu")
+texture_region_size = Vector2i(64, 64)
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+12:6/0 = 0
+11:6/0 = 0
+9:7/0 = 0
+8:7/0 = 0
+7:7/0 = 0
+6:7/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dkss"]
+texture = ExtResource("2_vfqbj")
+texture_region_size = Vector2i(64, 64)
+
+[sub_resource type="TileSet" id="TileSet_ttpai"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_m6u28")
+sources/1 = SubResource("TileSetAtlasSource_3dkss")
 
 [node name="level_1" type="Node2D"]
-script = ExtResource("1_boutd")
 
 [node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_ttpai")
+cell_quadrant_size = 64
 format = 2
+layer_0/name = "BG"
+layer_1/name = "Wall"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()
 script = ExtResource("2_oysd8")

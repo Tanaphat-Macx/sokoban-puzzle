@@ -33,7 +33,7 @@ grow_vertical = 2
 color = Color(0.85098, 0.462745, 0.411765, 1)
 
 [node name="Pause_Button" type="Button" parent="."]
-layout_mode = 2
+layout_mode = 0
 offset_left = 1.0
 offset_top = 107.0
 offset_right = 109.0
@@ -43,17 +43,18 @@ icon = ExtResource("2_11s67")
 flat = true
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 2
+layout_mode = 0
 offset_left = 143.5
 offset_top = 134.001
 offset_right = 496.5
 offset_bottom = 194.001
 grow_horizontal = 2
-text = "Level 12"
+text = "Level 1
+"
 label_settings = SubResource("LabelSettings_6uuam")
 
 [node name="Undo_Button" type="Button" parent="."]
-layout_mode = 2
+layout_mode = 0
 offset_left = 503.999
 offset_top = 106.0
 offset_right = 611.999
